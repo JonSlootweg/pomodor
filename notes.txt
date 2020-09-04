@@ -1,0 +1,5 @@
+ - need some app wide state to keep track of when to take a long break. 
+ - dark mode
+ - quotes? toggle 
+ - simple graph, one line for work, one line for breaks
+ - api
