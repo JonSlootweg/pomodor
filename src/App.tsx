@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TimerWrapper } from "./components/TimerContainer";
+import { TimerWrapper } from "./components/UI/TimerContainer";
 import "./App.css";
 
 function App() {
