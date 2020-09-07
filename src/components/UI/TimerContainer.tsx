@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
 import Timer from "react-compound-timer";
 import { TimerControls } from "react-compound-timer";
-import Play from "../images/play-circle.svg";
-import Pause from "../images/pause-circle.svg";
-import Reset from "../images/refresh-cw.svg";
+import Play from "../../images/play-circle.svg";
+import Pause from "../../images/pause-circle.svg";
+import Reset from "../../images/refresh-cw.svg";
 
 type TimerWrapperProps = {
   initialTime: number;
@@ -13,6 +13,12 @@ export const TimerWrapper: FunctionComponent<TimerWrapperProps> = ({
   initialTime,
   children,
 }) => {
+
+  const resetTimer = (reset: Function, pause: Function) => {
+    pause();
+    reset();
+  }
+
   return (
     <div className="timer">
       <Timer
@@ -20,6 +26,7 @@ export const TimerWrapper: FunctionComponent<TimerWrapperProps> = ({
         direction="backward"
         startImmediately={false}
         timeToUpdate={100}
+        onReset = {() => {console.log("reset")}}
       >
         {({ start, pause, reset }: TimerControls) => (
           <React.Fragment>
@@ -35,13 +42,13 @@ export const TimerWrapper: FunctionComponent<TimerWrapperProps> = ({
               />
 
             <div className="button-container">
-              <button onClick={start}>
+              <button className = "icon-button" onClick={start}>
                 <img src={Play} alt="Start"></img>
               </button>
-              <button onClick={pause}>
+              <button className = "icon-button" onClick={pause}>
                 <img src={Pause} alt="Pause"></img>
               </button>
-              <button onClick={reset}>
+              <button className = "icon-button" onClick={() => resetTimer(reset, pause)}>
                 <img src={Reset} alt="Reset"></img>
               </button>
             </div>
